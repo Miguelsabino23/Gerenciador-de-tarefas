@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import { ChevronRightIcon, TrashIcon } from "lucide-react";
+import { ChevronRightIcon, TrashIcon, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
@@ -19,10 +19,11 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
         <li key={task.id} className='flex gap-2'>
           <Button
             onClick={() => onTaskClick(task.id)}
-            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full ${
+            className={`bg-slate-400 text-left text-white p-2 rounded-md w-full flex gap-2 ${
               task.isCompleted && "line-through"
             }`}
           >
+            {task.isCompleted && <Check />}
             {task.title}
           </Button>
           <Button onClick={() => onSeeDetailsClick(task)}>
